@@ -1,0 +1,7 @@
+#!/bin/bash
+
+shopt -s expand_aliases
+
+bind() {
+	eval "alias \"$1=$2 $3 \""
+}

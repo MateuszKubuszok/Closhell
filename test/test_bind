@@ -1,0 +1,24 @@
+#!/bin/bash
+
+source "$(dirname $0)/../closhell"
+test_dir="$closhell_run_dir"/test
+
+prepare_suite "bind"
+
+after() {
+	rm -rf "$test_dir"/test_file_*
+}
+
+test_case "bind creates a proper alias" "$(cat <<-TEST
+	# given
+	bind create touch "$test_dir/test_file_binda.tmp"
+
+	# when
+	create
+
+	# then
+	cat "$test_dir/test_file_binda.tmp" > /dev/null
+TEST
+)"
+
+finish_suite
