@@ -1,0 +1,26 @@
+#!/bin/bash
+
+source "$(dirname $0)/../closhell"
+test_dir="$closhell_run_dir"/test
+
+prepare_suite "apply"
+
+after() {
+	rm -rf "$test_dir"/test_file_*
+}
+
+test_case "apply0 executes closure" "$(cat <<-TEST
+	# given
+
+	# when
+	apply0 "$(cat <<-BODY
+		touch "$test_dir"/test_file_apply0.tmp
+	BODY
+	)"
+
+	# then
+	cat "$test_dir"/test_file_apply0.tmp > /dev/null
+TEST
+)"
+
+finish_suite

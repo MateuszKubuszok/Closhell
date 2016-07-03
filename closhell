@@ -1,0 +1,6 @@
+#!/bin/bash
+
+closhell_run_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$closhell_run_dir/.closhell/apply"
+source "$closhell_run_dir/.closhell/testing"
