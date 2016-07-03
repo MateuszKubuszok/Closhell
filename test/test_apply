@@ -11,15 +11,223 @@ after() {
 
 test_case "apply0 executes closure" "$(cat <<-TEST
 	# given
-
-	# when
-	apply0 "$(cat <<-BODY
-		touch "$test_dir"/test_file_apply0.tmp
+	closure="$(cat <<-BODY
+		touch \"$test_dir/test_file_apply0a.tmp\"
 	BODY
 	)"
 
+	# when
+	apply0 "\$closure"
+
 	# then
-	cat "$test_dir"/test_file_apply0.tmp > /dev/null
+	cat "$test_dir"/test_file_apply0a.tmp > /dev/null
+TEST
+)"
+
+test_case "apply1 executes closure" "$(cat <<-TEST
+	# given
+	closure="$(cat <<-BODY
+		touch \"$test_dir/test_file_apply\\\$1.tmp\"
+	BODY
+	)"
+
+	# when
+	apply1 "1a" "\$closure"
+
+	# then
+	cat "$test_dir"/test_file_apply1a.tmp > /dev/null
+TEST
+)"
+
+test_case "apply2 executes closure" "$(cat <<-TEST
+	# given
+	closure="$(cat <<-BODY
+		touch \"$test_dir/test_file_apply\\\$1.tmp\"
+		touch \"$test_dir/test_file_apply\\\$2.tmp\"
+	BODY
+	)"
+
+	# when
+	apply2 "2a" "2b" "\$closure"
+
+	# then
+	cat "$test_dir"/test_file_apply2a.tmp "$test_dir"/test_file_apply2b.tmp > /dev/null
+TEST
+)"
+
+test_case "apply3 executes closure" "$(cat <<-TEST
+	# given
+	closure="$(cat <<-BODY
+		touch \"$test_dir/test_file_apply\\\$1.tmp\"
+		touch \"$test_dir/test_file_apply\\\$2.tmp\"
+		touch \"$test_dir/test_file_apply\\\$3.tmp\"
+	BODY
+	)"
+
+	# when
+	apply3 "3a" "3b" "3c" "\$closure"
+
+	# then
+	cat "$test_dir"/test_file_apply3a.tmp "$test_dir"/test_file_apply3b.tmp "$test_dir"/test_file_apply3c.tmp > /dev/null
+TEST
+)"
+
+test_case "apply4 executes closure" "$(cat <<-TEST
+	# given
+	closure="$(cat <<-BODY
+		touch \"$test_dir/test_file_apply\\\$1.tmp\"
+		touch \"$test_dir/test_file_apply\\\$2.tmp\"
+		touch \"$test_dir/test_file_apply\\\$3.tmp\"
+		touch \"$test_dir/test_file_apply\\\$4.tmp\"
+	BODY
+	)"
+
+	# when
+	apply4 "4a" "4b" "4c" "4d" "\$closure"
+
+	# then
+	cat "$test_dir"/test_file_apply4a.tmp "$test_dir"/test_file_apply4b.tmp "$test_dir"/test_file_apply4c.tmp \
+	    "$test_dir"/test_file_apply4d.tmp > /dev/null
+TEST
+)"
+
+test_case "apply5 executes closure" "$(cat <<-TEST
+	# given
+	closure="$(cat <<-BODY
+		touch \"$test_dir/test_file_apply\\\$1.tmp\"
+		touch \"$test_dir/test_file_apply\\\$2.tmp\"
+		touch \"$test_dir/test_file_apply\\\$3.tmp\"
+		touch \"$test_dir/test_file_apply\\\$4.tmp\"
+		touch \"$test_dir/test_file_apply\\\$5.tmp\"
+	BODY
+	)"
+
+	# when
+	apply5 "5a" "5b" "5c" "5d" "5e" "\$closure"
+
+	# then
+	cat "$test_dir"/test_file_apply5a.tmp "$test_dir"/test_file_apply5b.tmp "$test_dir"/test_file_apply5c.tmp \
+	    "$test_dir"/test_file_apply5d.tmp "$test_dir"/test_file_apply5e.tmp > /dev/null
+TEST
+)"
+
+test_case "apply6 executes closure" "$(cat <<-TEST
+	# given
+	closure="$(cat <<-BODY
+		touch \"$test_dir/test_file_apply\\\$1.tmp\"
+		touch \"$test_dir/test_file_apply\\\$2.tmp\"
+		touch \"$test_dir/test_file_apply\\\$3.tmp\"
+		touch \"$test_dir/test_file_apply\\\$4.tmp\"
+		touch \"$test_dir/test_file_apply\\\$5.tmp\"
+		touch \"$test_dir/test_file_apply\\\$6.tmp\"
+	BODY
+	)"
+
+	# when
+	apply6 "6a" "6b" "6c" "6d" "6e" "6f" "\$closure"
+
+	# then
+	cat "$test_dir"/test_file_apply6a.tmp "$test_dir"/test_file_apply6b.tmp "$test_dir"/test_file_apply6c.tmp \
+	    "$test_dir"/test_file_apply6d.tmp "$test_dir"/test_file_apply6e.tmp "$test_dir"/test_file_apply6f.tmp > /dev/null
+TEST
+)"
+
+test_case "apply7 executes closure" "$(cat <<-TEST
+	# given
+	closure="$(cat <<-BODY
+		touch \"$test_dir/test_file_apply\\\$1.tmp\"
+		touch \"$test_dir/test_file_apply\\\$2.tmp\"
+		touch \"$test_dir/test_file_apply\\\$3.tmp\"
+		touch \"$test_dir/test_file_apply\\\$4.tmp\"
+		touch \"$test_dir/test_file_apply\\\$5.tmp\"
+		touch \"$test_dir/test_file_apply\\\$6.tmp\"
+		touch \"$test_dir/test_file_apply\\\$7.tmp\"
+	BODY
+	)"
+
+	# when
+	apply7 "7a" "7b" "7c" "7d" "7e" "7f" "7g" "\$closure"
+
+	# then
+	cat "$test_dir"/test_file_apply7a.tmp "$test_dir"/test_file_apply7b.tmp "$test_dir"/test_file_apply7c.tmp \
+	    "$test_dir"/test_file_apply7d.tmp "$test_dir"/test_file_apply7e.tmp "$test_dir"/test_file_apply7f.tmp \
+	    "$test_dir"/test_file_apply7g.tmp > /dev/null
+TEST
+)"
+
+test_case "apply8 executes closure" "$(cat <<-TEST
+	# given
+	closure="$(cat <<-BODY
+		touch \"$test_dir/test_file_apply\\\$1.tmp\"
+		touch \"$test_dir/test_file_apply\\\$2.tmp\"
+		touch \"$test_dir/test_file_apply\\\$3.tmp\"
+		touch \"$test_dir/test_file_apply\\\$4.tmp\"
+		touch \"$test_dir/test_file_apply\\\$5.tmp\"
+		touch \"$test_dir/test_file_apply\\\$6.tmp\"
+		touch \"$test_dir/test_file_apply\\\$7.tmp\"
+		touch \"$test_dir/test_file_apply\\\$8.tmp\"
+	BODY
+	)"
+
+	# when
+	apply8 "8a" "8b" "8c" "8d" "8e" "8f" "8g" "8h" "\$closure"
+
+	# then
+	cat "$test_dir"/test_file_apply8a.tmp "$test_dir"/test_file_apply8b.tmp "$test_dir"/test_file_apply8c.tmp \
+	    "$test_dir"/test_file_apply8d.tmp "$test_dir"/test_file_apply8e.tmp "$test_dir"/test_file_apply8f.tmp \
+	    "$test_dir"/test_file_apply8g.tmp "$test_dir"/test_file_apply8h.tmp > /dev/null
+TEST
+)"
+
+test_case "apply9 executes closure" "$(cat <<-TEST
+	# given
+	closure="$(cat <<-BODY
+		touch \"$test_dir/test_file_apply\\\$1.tmp\"
+		touch \"$test_dir/test_file_apply\\\$2.tmp\"
+		touch \"$test_dir/test_file_apply\\\$3.tmp\"
+		touch \"$test_dir/test_file_apply\\\$4.tmp\"
+		touch \"$test_dir/test_file_apply\\\$5.tmp\"
+		touch \"$test_dir/test_file_apply\\\$6.tmp\"
+		touch \"$test_dir/test_file_apply\\\$7.tmp\"
+		touch \"$test_dir/test_file_apply\\\$8.tmp\"
+		touch \"$test_dir/test_file_apply\\\$9.tmp\"
+	BODY
+	)"
+
+	# when
+	apply9 "9a" "9b" "9c" "9d" "9e" "9f" "9g" "9h" "9i" "\$closure"
+
+	# then
+	cat "$test_dir"/test_file_apply9a.tmp "$test_dir"/test_file_apply9b.tmp "$test_dir"/test_file_apply9c.tmp \
+	    "$test_dir"/test_file_apply9d.tmp "$test_dir"/test_file_apply9e.tmp "$test_dir"/test_file_apply9f.tmp \
+	    "$test_dir"/test_file_apply9g.tmp "$test_dir"/test_file_apply9h.tmp "$test_dir"/test_file_apply9i.tmp > /dev/null
+TEST
+)"
+
+test_case "apply10 executes closure" "$(cat <<-TEST
+	# given
+	closure="$(cat <<-BODY
+		touch \"$test_dir/test_file_apply\\\$1.tmp\"
+		touch \"$test_dir/test_file_apply\\\$2.tmp\"
+		touch \"$test_dir/test_file_apply\\\$3.tmp\"
+		touch \"$test_dir/test_file_apply\\\$4.tmp\"
+		touch \"$test_dir/test_file_apply\\\$5.tmp\"
+		touch \"$test_dir/test_file_apply\\\$6.tmp\"
+		touch \"$test_dir/test_file_apply\\\$7.tmp\"
+		touch \"$test_dir/test_file_apply\\\$8.tmp\"
+		touch \"$test_dir/test_file_apply\\\$9.tmp\"
+		touch \"$test_dir/test_file_apply\\\${10}.tmp\"
+	BODY
+	)"
+
+	# when
+	apply10 "10a" "10b" "10c" "10d" "10e" "10f" "10g" "10h" "10i" "10j" "\$closure"
+
+	# then
+	cat "$test_dir"/test_file_apply10a.tmp "$test_dir"/test_file_apply10b.tmp "$test_dir"/test_file_apply10c.tmp \
+	    "$test_dir"/test_file_apply10d.tmp "$test_dir"/test_file_apply10e.tmp "$test_dir"/test_file_apply10f.tmp \
+	    "$test_dir"/test_file_apply10g.tmp "$test_dir"/test_file_apply10h.tmp "$test_dir"/test_file_apply10i.tmp \
+	    "$test_dir"/test_file_apply10j.tmp > /dev/null
 TEST
 )"
 
