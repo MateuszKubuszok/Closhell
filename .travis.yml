@@ -1,0 +1,8 @@
+language: python
+before_install:
+        - chmod +x test/test_apply
+        - chmod +x test/test_bind
+        - ls -la test
+script:
+        - test/test_apply
+        - test/test_bind
