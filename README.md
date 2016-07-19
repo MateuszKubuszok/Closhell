@@ -1,5 +1,7 @@
 # Closhell
 
+[![Build Status](https://travis-ci.org/MateuszKubuszok/Closhell.png)](https://travis-ci.org/MateuszKubuszok/Closhell)
+
 A simple experiment to see how far could I introduce somehow functional style of programming into my Bash scripts.
 
 ## Why?
