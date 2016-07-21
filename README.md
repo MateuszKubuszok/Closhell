@@ -112,7 +112,7 @@ test_case "my test case description" "$(cat <<-TEST
 	...
 
 	# then
-	assert_equal \$? 0 // compare last command exit code to EXIT_SUCCESS
+	assert_equal \$? 0 # compare last command exit code to EXIT_SUCCESS
 	something_that_returns_exit_0_for_successful_test_non_0_otherwise
 TEST
 )"
