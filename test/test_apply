@@ -21,7 +21,7 @@ test_case "apply0 executes closure" "$(cat <<-TEST
 	apply0 "\$closure"
 
 	# then
-	assert_equal $? 1
+	assert_equal \$? 1
 	cat "$test_dir"/test_file_apply0a.tmp > /dev/null
 TEST
 )"
@@ -38,7 +38,7 @@ test_case "apply1 executes closure" "$(cat <<-TEST
 	apply1 "1a" "\$closure"
 
 	# then
-	assert_equal $? 2
+	assert_equal \$? 2
 	cat "$test_dir"/test_file_apply1a.tmp > /dev/null
 TEST
 )"
@@ -56,7 +56,7 @@ test_case "apply2 executes closure" "$(cat <<-TEST
 	apply2 "2a" "2b" "\$closure"
 
 	# then
-	assert_equal $? 3
+	assert_equal \$? 3
 	cat "$test_dir"/test_file_apply2a.tmp "$test_dir"/test_file_apply2b.tmp > /dev/null
 TEST
 )"
@@ -75,7 +75,7 @@ test_case "apply3 executes closure" "$(cat <<-TEST
 	apply3 "3a" "3b" "3c" "\$closure"
 
 	# then
-	assert_equal $? 4
+	assert_equal \$? 4
 	cat "$test_dir"/test_file_apply3a.tmp "$test_dir"/test_file_apply3b.tmp "$test_dir"/test_file_apply3c.tmp > /dev/null
 TEST
 )"
@@ -95,7 +95,7 @@ test_case "apply4 executes closure" "$(cat <<-TEST
 	apply4 "4a" "4b" "4c" "4d" "\$closure"
 
 	# then
-	assert_equal $? 5
+	assert_equal \$? 5
 	cat "$test_dir"/test_file_apply4a.tmp "$test_dir"/test_file_apply4b.tmp "$test_dir"/test_file_apply4c.tmp \
 	    "$test_dir"/test_file_apply4d.tmp > /dev/null
 TEST
@@ -117,7 +117,7 @@ test_case "apply5 executes closure" "$(cat <<-TEST
 	apply5 "5a" "5b" "5c" "5d" "5e" "\$closure"
 
 	# then
-	assert_equal $? 6
+	assert_equal \$? 6
 	cat "$test_dir"/test_file_apply5a.tmp "$test_dir"/test_file_apply5b.tmp "$test_dir"/test_file_apply5c.tmp \
 	    "$test_dir"/test_file_apply5d.tmp "$test_dir"/test_file_apply5e.tmp > /dev/null
 TEST
@@ -140,7 +140,7 @@ test_case "apply6 executes closure" "$(cat <<-TEST
 	apply6 "6a" "6b" "6c" "6d" "6e" "6f" "\$closure"
 
 	# then
-	assert_equal $? 7
+	assert_equal \$? 7
 	cat "$test_dir"/test_file_apply6a.tmp "$test_dir"/test_file_apply6b.tmp "$test_dir"/test_file_apply6c.tmp \
 	    "$test_dir"/test_file_apply6d.tmp "$test_dir"/test_file_apply6e.tmp "$test_dir"/test_file_apply6f.tmp > /dev/null
 TEST
@@ -164,7 +164,7 @@ test_case "apply7 executes closure" "$(cat <<-TEST
 	apply7 "7a" "7b" "7c" "7d" "7e" "7f" "7g" "\$closure"
 
 	# then
-	assert_equal $? 8
+	assert_equal \$? 8
 	cat "$test_dir"/test_file_apply7a.tmp "$test_dir"/test_file_apply7b.tmp "$test_dir"/test_file_apply7c.tmp \
 	    "$test_dir"/test_file_apply7d.tmp "$test_dir"/test_file_apply7e.tmp "$test_dir"/test_file_apply7f.tmp \
 	    "$test_dir"/test_file_apply7g.tmp > /dev/null
@@ -190,7 +190,7 @@ test_case "apply8 executes closure" "$(cat <<-TEST
 	apply8 "8a" "8b" "8c" "8d" "8e" "8f" "8g" "8h" "\$closure"
 
 	# then
-	assert_equal $? 9
+	assert_equal \$? 9
 	cat "$test_dir"/test_file_apply8a.tmp "$test_dir"/test_file_apply8b.tmp "$test_dir"/test_file_apply8c.tmp \
 	    "$test_dir"/test_file_apply8d.tmp "$test_dir"/test_file_apply8e.tmp "$test_dir"/test_file_apply8f.tmp \
 	    "$test_dir"/test_file_apply8g.tmp "$test_dir"/test_file_apply8h.tmp > /dev/null
@@ -217,7 +217,7 @@ test_case "apply9 executes closure" "$(cat <<-TEST
 	apply9 "9a" "9b" "9c" "9d" "9e" "9f" "9g" "9h" "9i" "\$closure"
 
 	# then
-	assert_equal $? 10
+	assert_equal \$? 10
 	cat "$test_dir"/test_file_apply9a.tmp "$test_dir"/test_file_apply9b.tmp "$test_dir"/test_file_apply9c.tmp \
 	    "$test_dir"/test_file_apply9d.tmp "$test_dir"/test_file_apply9e.tmp "$test_dir"/test_file_apply9f.tmp \
 	    "$test_dir"/test_file_apply9g.tmp "$test_dir"/test_file_apply9h.tmp "$test_dir"/test_file_apply9i.tmp > /dev/null
@@ -245,7 +245,7 @@ test_case "apply10 executes closure" "$(cat <<-TEST
 	apply10 "10a" "10b" "10c" "10d" "10e" "10f" "10g" "10h" "10i" "10j" "\$closure"
 
 	# then
-	assert_equal $? 11
+	assert_equal \$? 11
 	cat "$test_dir"/test_file_apply10a.tmp "$test_dir"/test_file_apply10b.tmp "$test_dir"/test_file_apply10c.tmp \
 	    "$test_dir"/test_file_apply10d.tmp "$test_dir"/test_file_apply10e.tmp "$test_dir"/test_file_apply10f.tmp \
 	    "$test_dir"/test_file_apply10g.tmp "$test_dir"/test_file_apply10h.tmp "$test_dir"/test_file_apply10i.tmp \
