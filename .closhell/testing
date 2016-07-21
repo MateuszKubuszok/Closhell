@@ -39,7 +39,7 @@ test_case() {
 	echo "  - $1"
 	run_before
 	noop # to make sure that empty body always returns 0
-	eval "$2"
+	(eval "$2")
 	if [ $? -eq 0 ]; then
 		export suite_successful_tests=$((suite_successful_tests+1))
 		echo "    [success]"

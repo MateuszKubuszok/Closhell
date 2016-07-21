@@ -3,7 +3,7 @@
 apply0() (
 	body=$1
 	block() {
-		eval "$body"
+		(eval "$body")
 	}
 	block
 )
@@ -11,7 +11,7 @@ apply0() (
 apply1() (
 	body=$2
 	block() {
-		eval "$body"
+		(eval "$body")
 	}
 	block "$1"
 )
@@ -19,7 +19,7 @@ apply1() (
 apply2() (
 	body=$3
 	block() {
-		eval "$body"
+		(eval "$body")
 	}
 	block "$1" "$2"
 )
@@ -27,7 +27,7 @@ apply2() (
 apply3() (
 	body=$4
 	block() {
-		eval "$body"
+		(eval "$body")
 	}
 	block "$1" "$2" "$3"
 )
@@ -35,7 +35,7 @@ apply3() (
 apply4() (
 	body=$5
 	block() {
-		eval "$body"
+		(eval "$body")
 	}
 	block "$1" "$2" "$3" "$4"
 )
@@ -43,7 +43,7 @@ apply4() (
 apply5() (
 	body=$6
 	block() {
-		eval "$body"
+		(eval "$body")
 	}
 	block "$1" "$2" "$3" "$4" "$5"
 )
@@ -51,7 +51,7 @@ apply5() (
 apply6() (
 	body=$7
 	block() {
-		eval "$body"
+		(eval "$body")
 	}
 	block "$1" "$2" "$3" "$4" "$5" "$6"
 )
@@ -60,7 +60,7 @@ apply6() (
 apply7() (
 	body=$8
 	block() {
-		eval "$body"
+		(eval "$body")
 	}
 	block "$1" "$2" "$3" "$4" "$5" "$6" "$7"
 )
@@ -68,7 +68,7 @@ apply7() (
 apply8() (
 	body=$9
 	block() {
-		eval "$body"
+		(eval "$body")
 	}
 	block "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8"
 )
@@ -76,7 +76,7 @@ apply8() (
 apply9() (
 	body=${10}
 	block() {
-		eval "$body"
+		(eval "$body")
 	}
 	block "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9"
 )
@@ -84,7 +84,7 @@ apply9() (
 apply10() (
 	body=${11}
 	block() {
-		eval "$body"
+		(eval "$body")
 	}
 	block "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" "${10}"
 )

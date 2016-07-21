@@ -17,7 +17,7 @@ test_case "bind creates a proper alias" "$(cat <<-TEST
 	create
 
 	# then
-	cat "$test_dir/test_file_binda.tmp" > /dev/null
+	assert_equal \$? 0
 TEST
 )"
 
