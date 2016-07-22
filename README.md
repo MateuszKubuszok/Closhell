@@ -169,3 +169,12 @@ bind create_file apply "\$create_file_closure" # pollutes whole "scope"
 )
 
 ```
+
+## Advantages
+
+ * easy to understand - on the beginning, later on hell will break loose,
+ * job security as no one will be able to edit your scripts - with all the `$` escaping even you won't fully
+   understand how your script works,
+ * doesn't modify existing bash grammar - only abuses it to the maximum extent,
+ * almost looks nice to functional programmers - except it's still full of side effects and mutabilty,
+ * best agile practices - no documentation, useless unit tests, iterations (no long-term planning), driven by the market need of setting the world ablaze.
