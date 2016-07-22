@@ -155,3 +155,17 @@ TEST
 
 finish_suite
 ```
+
+## Suggestions
+
+Since bash lacks any actuall scoping one could use `()` to create subshells which would contain all newly created
+variables, aliases etc for themselves.
+
+```bash
+bind create_file apply "\$create_file_closure" # pollutes whole "scope"
+
+(
+	bind update_file apply "\$update_file_closure" # contained within scope
+)
+
+```
