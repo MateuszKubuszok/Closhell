@@ -9,6 +9,28 @@ after() {
 	rm -rf "$test_dir"/test_file_*
 }
 
+test_case "apply executes closure" "$(cat <<-TEST
+	# given
+	closure="$(cat <<-BODY
+		touch \"$test_dir/test_file_apply\\\$1.tmp\"
+		touch \"$test_dir/test_file_apply\\\$2.tmp\"
+		touch \"$test_dir/test_file_apply\\\$3.tmp\"
+		touch \"$test_dir/test_file_apply\\\$4.tmp\"
+		touch \"$test_dir/test_file_apply\\\$5.tmp\"
+		return 100
+	BODY
+	)"
+
+	# when
+	apply "a" "b" "c" "d" "e" "\$closure"
+
+	# then
+	assert_equal \$? 100
+	cat "$test_dir"/test_file_applya.tmp "$test_dir"/test_file_applyb.tmp "$test_dir"/test_file_applyc.tmp \
+	    "$test_dir"/test_file_applyd.tmp "$test_dir"/test_file_applye.tmp > /dev/null
+TEST
+)"
+
 test_case "apply0 executes closure" "$(cat <<-TEST
 	# given
 	closure="$(cat <<-BODY

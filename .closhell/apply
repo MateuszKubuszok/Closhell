@@ -1,5 +1,16 @@
 #!/bin/bash
 
+apply() (
+	copy=("$@")
+	argc=$(expr $# - 1)
+	argv=${@:1:$argc}
+	body=${copy[-1]}
+	block() {
+		(eval "$body")
+	}
+	block $argv
+)
+
 apply0() (
 	body=$1
 	block() {
