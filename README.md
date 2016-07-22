@@ -30,6 +30,7 @@ First create a closure:
 
 ```bash
 closure="$(cat <<-BODY
+  # since each touch produces side-effects we might say that this a bad touch
 	touch "$test_dir/test_file_apply\$1.tmp"
 BODY
 )"
@@ -55,6 +56,9 @@ BODY
 There are apply version taking from 0 to 10 arguments (`apply0`, `apply1`, ..., `apply10`). A closure is always passed
 as the last one.
 
+(Well, recently I created the universal `apply` but whatever. What could go wrong if someone used specific one and
+miscounted?)
+
 Things to remember about:
 
   * `<<-DELIMITER ... DELIMITER` helpdoc syntax allows us for using nested blocks - it removes leftmost tabs so as long
@@ -79,7 +83,7 @@ call "$closure" "argument"
 ```
 
 As such it is more suited for calling closure stored in variable and/or binding while `apply` works better for applying
-closure immediatelly.
+closure immediatelly. Which is why in the _suggestions_ section I did it completely the other way.
 
 ### bind
 
@@ -92,7 +96,7 @@ bind create touch "$test_dir/test_file_binda.tmp"
 create
 ```
 
- * first argument - name of created alias,
+ * first argument - name of a created alias,
  * second argument - name of a bounded function,
  * third argument - bounded arguments.
 
@@ -102,7 +106,7 @@ arguments manually). Maybe in the future I came up with something better :P
 
 ### map
 
-It allows one calling some closure for a sollection of arguments (by collection I mean something that one can put into
+It allows one calling some closure for a collection of arguments (by collection I mean something that one can put into
 `for` loop).
 
 ```bash
@@ -158,7 +162,7 @@ finish_suite
 
 ## Suggestions
 
-Since bash lacks any actuall scoping one could use `()` to create subshells which would contain all newly created
+Since bash lacks any actual scoping one could use `()` to create subshells which would contain all newly created
 variables, aliases etc for themselves.
 
 ```bash
@@ -172,9 +176,12 @@ bind create_file apply "\$create_file_closure" # pollutes whole "scope"
 
 ## Advantages
 
- * easy to understand - on the beginning, later on hell will break loose,
+ * easy to understand - in the beginning, later on hell will break loose,
  * job security as no one will be able to edit your scripts - with all the `$` escaping even you won't fully
    understand how your script works,
  * doesn't modify existing bash grammar - only abuses it to the maximum extent,
  * almost looks nice to functional programmers - except it's still full of side effects and mutabilty,
- * best agile practices - no documentation, useless unit tests, iterations (no long-term planning), driven by the market need of setting the world ablaze.
+ * best agile practices - no documentation, useless unit tests, iterations (no long-term planning), driven by the market
+   need of setting the world ablaze,
+ * perfect revenge tool if you are getting fired and they still require you to write few thousands scripts to hold their
+   shit together - if you aren't maintaining it no one will.
