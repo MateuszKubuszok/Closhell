@@ -5,3 +5,4 @@ before_script:
 script:
         - test/test_apply
         - test/test_bind
+        - test/test_call

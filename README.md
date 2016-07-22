@@ -65,6 +65,22 @@ Things to remember about:
     about quotation marks `"`, `\"`, `\\\"` should be used accordingly. It's a major PITA but I couldn't reasonable
      workaround.
 
+### call
+
+`call` is a twin function to `apply`. The only difference is that it takes closure as first parameter not the last.
+
+```bash
+closure="$(cat <<-BODY
+	touch "$test_dir/test_file_apply\$1.tmp"
+BODY
+)"
+
+call "$closure" "argument"
+```
+
+As such it is more suited for calling closure stored in variable and/or binding while `apply` works better for applying
+closure immediatelly.
+
 ### bind
 
 To be honest we can use all good `alias` here but that reasoning would prevent me from reinventing the wheel for my own

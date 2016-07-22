@@ -1,0 +1,12 @@
+#!/bin/bash
+
+call() (
+	copy=("$@")
+	argc=$(expr $# - 1)
+	argv=${@:2}
+	body=${copy[0]}
+	block() {
+		(eval "$body")
+	}
+	block $argv
+)
