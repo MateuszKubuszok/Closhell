@@ -1,0 +1,30 @@
+#!/bin/bash
+
+source "$(dirname $0)/../closhell"
+test_dir="$closhell_run_dir"/test
+
+prepare_suite "map"
+
+after() {
+	rm -rf "$test_dir"/test_file_*
+}
+
+test_case "map calls closure for all args" "$(cat <<-TEST
+	# given
+	closure="$(cat <<-BODY
+		touch \"$test_dir/test_file_map\\\$1.tmp\"
+		return 100
+	BODY
+	)"
+	args=("a b")
+
+	# when
+	map "\$args" "\$closure"
+
+	# then
+	assert_equal \$? 100
+	cat "$test_dir"/test_file_mapa.tmp "$test_dir"/test_file_mapb.tmp > /dev/null
+TEST
+)"
+
+finish_suite

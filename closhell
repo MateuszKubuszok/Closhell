@@ -9,6 +9,7 @@ closhell_run_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$closhell_run_dir/.closhell/apply"
 source "$closhell_run_dir/.closhell/bind"
 source "$closhell_run_dir/.closhell/call"
+source "$closhell_run_dir/.closhell/map"
 source "$closhell_run_dir/.closhell/testing"
 
 CLOSHELL_IMPORTED=0

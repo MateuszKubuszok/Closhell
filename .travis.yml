@@ -6,3 +6,4 @@ script:
         - test/test_apply
         - test/test_bind
         - test/test_call
+        - test/test_map

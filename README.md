@@ -100,6 +100,26 @@ I thought about returning a closure similarly to `apply`, but that would be anno
 arguments and always allows you to pass as many more arguments as you want (which would be difficult todo when you pass
 arguments manually). Maybe in the future I came up with something better :P
 
+### map
+
+It allows one calling some closure for a sollection of arguments (by collection I mean something that one can put into
+`for` loop).
+
+```bash
+closure="$(cat <<-BODY
+	touch \"$test_dir/test_file_map\\\$1.tmp\"
+BODY
+)"
+
+args=("a b")
+
+map "$args" "$closure"
+```
+
+The result is... well, one should look after it on output streams. If you assume that possible inputs are lists of
+strings and results are outputs produced by called closures then you'll get something like poor man's monade (I was to
+lazy to check if it actually follows any monadic laws, probably not :P).
+
 ### testing
 
 Primitive test framework. Better than nothing but I wouldn't recommend it to anyone :P

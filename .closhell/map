@@ -1,0 +1,12 @@
+#!/bin/bash
+
+map() (
+	args=("$1")
+	body=$2
+	block() {
+		(eval "$body")
+	}
+	for arg in $args; do
+		block $arg
+	done
+)
